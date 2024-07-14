@@ -1,0 +1,82 @@
+Lecture Video: https://www.youtube.com/watch?v=oilHZKw6o9M&list=PLnNg6KqJ3HGiiPJB2ra2j-_8SqGIC6ydw&index=5
+
+************ To run "Maven" project, need to install Maven first in our system *************
+
+Steps to install Maven:
+-> Download "Maven" from this link : https://maven.apache.org/download.cgi  (File name formate: apache-maven-3.9.8-bin.zip)
+-> Unzip that file and put it in "C" Drive 
+-> Open "Bin" file in the "Maven" folder and copy the full path
+-> Open "Environment Variable" of the PC and set the path there
+	-> Create 2 vriables called "M2_HOME" & "MAVEN_HOME" and put both of it's value until bin (C:\Program Files\apache-maven-3.9.8)
+	-> Select "PATH" from the "System Variable" section and "Edit"
+	-> Add the full path till (C:\Program Files\apache-maven-3.9.8)
+	-> Add previously created 2 Env variable here with "\bin"  ( %M2_HOME%\bin ) & ( %MAVEN_HOME%\bin )
+-> Save all and check "Maven" version from the "CMD" ( mvn -version )
+
+
+
+*********** Run "Maven" project through the "CMD" *************
+Steps to run Eclipse Maven project
+-> Copy the "Maven Project file" path
+-> Open "CMD" and set the "Project path as directory ( cd "Path link" )
+	-> i.e: ( cd C:\Users\AR\eclipse-workspace\Jvp )
+-> mvn test
+
+Now the Maven project will be execute and will show the result on the CMD
+
+
+
+********** Run Maven project with "run.bat" file ************
+-> Create a "run.bat" file and open it with Notepad
+-> Put the following two commands in the "bat" file
+	-> cd "Maven Project path" ( cd C:\Users\AR\eclipse-workspace\Jvp )
+	-> mvn test
+
+-> Open the "run.bat" file by double clicking or from the option by right click
+It will execute the "Maven project" 
+
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+
+************* Push the Maven project on Github and Integrate with Jenkins and run from there **************
+
+Lecture Video: https://www.youtube.com/watch?v=bk1KLGoI6Vw&list=PLnNg6KqJ3HGiiPJB2ra2j-_8SqGIC6ydw&index=6
+
+
+
+********** Create a Github Repository and Push the project ************
+-> create a project on Github
+-> Open the "Maven project" path directory on CMD -->  "Git init"
+-> git add .	--> Git commit -m "First update"	
+-> git remote add origin "Github repository path link" 
+	--> i.e: git remote add origin https://github.com/racashik/maven_project_run_with_Jenkins.git
+-> git push -u origin main/master
+
+Now the Maven project will be uploaded to the GitHub Repository
+
+
+
+************ Connect the GitHub project with Jenkins and run ************
+-> Install "Maven Integration" Plugins on Jenkins (Now can create Maven project)
+-> Neem to configure Maven
+	-> Go to "Manage Jenkins"  --> Tools
+	-> Go to "JDK Installation" section   --> Add JDK	--> Put a JDK name (JDK1)   --> Put "JAVA_Home" path  (Get it from the PC Environment variable) 
+-> Go to "Maven installations" Section	    --> Add Maven	--> Put a name (MAVEN1)		--> Uncheck "Install Automatically" 	--> Put "MAVEN_HOME" path  (Get it from the PC Environment variable)
+-> Apply	--> Save
+
+
+********* Now create a Maven Project *******
+-> New Item	--> Put a project name		--> Select "Maven Project"
+-> Configuration page will be opened 	--> Go to "Source Code Management" section	--> Select "git"  --> Put "Repository URL"  ( Copy from the GitHub repository )
+-> Go to "Build" Section	--> Put "pom.xml" for "Root POM" 
+-> In "Goals and options" field put "test"	( It's the "mvn test" command )
+-> Apply	--> Save
+
+-> Now "Build" the project
+
+
+
